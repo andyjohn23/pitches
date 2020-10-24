@@ -138,7 +138,7 @@
 }
 .browse-button{
     margin-left: 38%;
-    margin-top: 8%;
+    margin-top: 5%;
     margin-bottom: 8%;
 }
 .browse-button a button{
@@ -155,5 +155,40 @@
 }
 .browse-button a button:hover{
     background-color: rgba(75,188,251,0.9);
+    transition: 0.5s ease;
+}
+.category .button{
+    margin-left: 5%;
+}
+.nav-signup-button{
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 200;
+    background-color:#4BBCFB;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.8);
+}
+.nav-login-button{
+    background-color: #FFFFFF;
+    border: 1px solid #4BBCFB;
+    color: #4BBCFB;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 200;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.8);
+}
+.nav-signup-button:hover{
+    background-color: rgba(75,188,251,0.9);
+    transition: 0.5s ease;
+}
+.nav-login-button:hover{
+    background-color: rgba(255,255,255,0.9);
     transition: 0.5s ease;
 }
