@@ -23,3 +23,57 @@ body{
     height: 40px;
     object-fit: contain;
 }
+.index-info{
+    margin-top: 12%;
+    margin-left: 13%;
+}
+.intro-info{
+    margin-left: 10%;
+}
+.intro-info h1{
+    font-size: 65px;
+    font-weight: 400;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #404040;
+}
+.intro-info span{
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+.intro-info p{
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.intro-image img{
+    position: relative;
+    margin-top: -5%;
+}
+.button{
+    margin-left: 18%;
+}
+.button a button{
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 200;
+    background-color:#4BBCFB;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.8);
+}
+.button .login-button{
+    background-color: #FFFFFF;
+    border: 1px solid #4BBCFB;
+    color: #4BBCFB;
+}
+.button a button:hover{
+    background-color: rgba(75,188,251,0.9);
+    transition: 0.5s ease;
+}
+.button .login-button:hover{
+    background-color: rgba(255,255,255,0.9);
+    transition: 0.5s ease;
+}

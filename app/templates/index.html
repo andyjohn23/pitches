@@ -3,11 +3,36 @@
 <!-- Content block -->
 {% block body %}
 <div class="container-fluid flex flex-column" style="margin: 0; padding: 0;">
-    <nav class="navbar fixed-top navbar-expand">
+    <nav class="navbar fixed-top navbar-expand-lg">
         <a class="navbar-brand" href="/">
             <img src="static/images/pitch-logo.png" alt="logo" />
             <span>Pitch-it</span>
         </a>
     </nav>
+
+    <div class="container index-info">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="intro-info">
+                    <h1>Hi, we're <br> Pitch-it.</h1>
+                    <p><span>The world's most loved pitching platform</span> <br> <br>
+                        Pitch-it connects thousands of people through <br>
+                        the power of pitching.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="intro-image">
+                    <img src="static/images/pitch-inter.png" alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button">
+        <a href="/"><button type="button">SIGN UP</button></a> &nbsp;
+        <a href="/"><button type="button" class="login-button">LOGIN</button></a>
+    </div>
 </div>
 {% endblock %}
