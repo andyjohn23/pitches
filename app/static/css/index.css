@@ -19,7 +19,7 @@
     object-fit: contain;
 }
 .index-info{
-    margin-top: 12%;
+    margin-top: 14%;
     margin-left: 11%;
 }
 .intro-info{
@@ -45,7 +45,7 @@
     margin-top: -5%;
 }
 .button{
-    margin-left: 16%;
+    margin-left: 5%;
 }
 .button a button{
     width: 180px;
@@ -80,6 +80,7 @@
     font-size: 40px;
     font-weight: 400;
     font-family: cursive;
+    color: #404040;
 }
 .register-section img{
     width: 40px;
@@ -106,4 +107,31 @@
 .how-it-works-section p{
     justify-content: center;
     text-align: center;
+    margin-top: 3%;
+}
+.featured-pitches{
+    margin-top: 6%;
+}
+.featured-pitches h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    font-family: cursive;
+    color: #404040;
+}
+.featured-pitches-section{
+    margin-top: 5%;
+    margin-left: 8%;
+}
+.featured-pitches-section .card{
+    width: 80%;
+    max-height: 100%;
+}
+.featured-pitches-section h5{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: cursive;
+}
+.featured-pitches-section .card p{
+    font-size: 14px;
 }
