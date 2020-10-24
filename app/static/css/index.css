@@ -126,6 +126,7 @@
 .featured-pitches-section .card{
     width: 80%;
     max-height: 100%;
+    box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.8);
 }
 .featured-pitches-section h5{
     font-size: 25px;
@@ -134,4 +135,25 @@
 }
 .featured-pitches-section .card p{
     font-size: 14px;
+}
+.browse-button{
+    margin-left: 38%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+.browse-button a button{
+    background-color:#4BBCFB;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    width: 280px;
+    height: 60px;
+    font-size: 15px;
+    font-weight: 200;
+    box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.8);
+}
+.browse-button a button:hover{
+    background-color: rgba(75,188,251,0.9);
+    transition: 0.5s ease;
 }
