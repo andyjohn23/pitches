@@ -19,7 +19,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="">Pitch</a>
-                      <a class="dropdown-item" href="">Account</a>
+                      <a class="dropdown-item" href="{{url_for('main.profile',uname=current_user.username)}}">Account</a>
                       <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
                     </div>
                   </li>
