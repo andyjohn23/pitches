@@ -231,6 +231,9 @@
     font-family: 'Courier New', Courier, monospace;
     color: grey;
 }
+.modal-body input[type=checkbox]{
+    margin-left: -38%;
+}
 .modal-footer{
     background-color: white;
     border: none;
