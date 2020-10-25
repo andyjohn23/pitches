@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% import 'macros.html' as macro %}
+{% import 'bootstrap/wtf.html' as wtf%}
 <!-- Content block -->
 {% block content %}
 <div class="container-fluid flex flex-column" style="margin: 0; padding: 0;">
     <nav class="navbar fixed-top navbar-expand">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/category">
             <img src="/static/images/pitch-logo.png" alt="logo" />
             <span>Pitch-it</span>
         </a>
@@ -12,8 +13,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto" style="margin-right: 10%;">
                 {% if current_user.is_authenticated %}
-                <li style="color:white;padding:15px;">{{current_user.username}}</li>
-                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{current_user.username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="">Account</a>
+                      <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
+                    </div>
+                  </li>
                 {% else %}
                 <li class="nav-item">
                     <button type="button" class="nav-signup-button" data-toggle="modal"
@@ -26,65 +34,6 @@
             </ul>
         </div>
     </nav>
-
-    <!--Register Modal -->
-    <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="register-modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="register-modal" style="font-size: 26px;">Create an account</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <label for="email">Email</label><br>
-                    <input type="email" placeholder="Email address"></input><br><br>
-
-                    <label for="email">Username</label><br>
-                    <input type="text" placeholder="Username"></input><br><br>
-
-                    <label for="email">Password</label><br>
-                    <input type="password" placeholder="Password"></input><br><br>
-
-                    <label for="email">Confirm Password</label><br>
-                    <input type="password" placeholder="Confirm Password"></input>
-                </div>
-                <div class="modal-footer">
-                    <button type="button">SIGN UP</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--login Modal -->
-    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="login-modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="login-modal" style="font-size: 26px;">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="/login">
-                        <label for="email">Email</label><br>
-                        <input type="email" placeholder="Email address"></input><br><br>
-
-                        <label for="email">Password</label><br>
-                        <input type="password" placeholder="Password"></input><br><br>
-
-                        <input type="checkbox" id="check" name="vehicle1" value="check">
-                        <label for="check" style="margin-left: -42%;">Remember Me</label>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button">LOGIN</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container categories">
         <div class="row">

@@ -2,23 +2,48 @@
 {% import 'bootstrap/wtf.html' as wtf%}
 
 {% block content %}
-<div class="container"> 
-    <div class="row">
-      <div class= "col-md-2"> </div>
-      <div class="col-md-8">
-      <!--Flash message -->
-      {% for message in get_flashed_messages() %}
-        <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
-        </div>
-      {% endfor %}
-      <!-- Login form -->
-      {{wtf.quick_form(login_form)}}
-      <p> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
-     </div>
-     <div clas="col-md-2"> </div>
+<div class="container-fluid flex flex-column" style="margin: 0; padding: 0;">
+  <nav class="navbar fixed-top navbar-expand">
+    <a class="navbar-brand" href="/">
+      <img src="/static/images/pitch-logo.png" alt="logo" />
+      <span>Pitch-it</span>
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" style="margin-right: 10%;">
+        {% if current_user.is_authenticated %}
+        <li style="color:white;padding:15px;">{{current_user.username}}</li>
+        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+        {% else %}
+        <li class="nav-item">
+          <a href="{{url_for('auth.register')}}"><button type="button" class="nav-signup-button">SIGN UP</button></a>&nbsp;
+        </li>&nbsp;&nbsp;
+        <li class="nav-item">
+          <a href="{{url_for('auth.login')}}"><button type="button" class="nav-login-button">LOGIN</button></a>
+        </li>
+        {%endif%}
+      </ul>
     </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 login-form">
+        <!--Flash message -->
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ message }}
+        </div>
+        {% endfor %}
+        <!-- Login form -->
+        {{wtf.quick_form(login_form)}}
+        <p style="margin-left:5%;"> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+      </div>
+      <div clas="col-md-2"> </div>
+    </div>
+  </div>
 </div>
 
 {% endblock%}
