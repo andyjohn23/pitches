@@ -16,10 +16,10 @@
                 <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="/"><button type="button" class="nav-signup-button">SIGN UP</button></a> &nbsp;
+                    <a href="{{url_for('auth.register')}}"><button type="button" class="nav-signup-button">SIGN UP</button></a> &nbsp;
                 </li>&nbsp;&nbsp;
                 <li class="nav-item">
-                    <a href="/"><button type="button" class="nav-login-button">LOGIN</button></a>
+                    <a href="{{url_for('auth.login')}}"><button type="button" class="nav-login-button">LOGIN</button></a>
                 </li>
                 {%endif%}
             </ul>
