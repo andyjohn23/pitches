@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import 'macros.html' as macro %}
 <!-- Content block -->
-{% block body %}
+{% block content %}
 <div class="container-fluid flex flex-column" style="margin: 0; padding: 0;">
     <nav class="navbar fixed-top navbar-expand">
         <a class="navbar-brand" href="/">
@@ -16,10 +16,11 @@
                 <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                 {% else %}
                 <li class="nav-item">
-                    <button type="button" class="nav-signup-button" data-toggle="modal" data-target="#register-modal">SIGN UP</button>&nbsp;
+                    <button type="button" class="nav-signup-button" data-toggle="modal"
+                        data-target="#register-modal">SIGN UP</button>&nbsp;
                 </li>&nbsp;&nbsp;
                 <li class="nav-item">
-                    <button type="button" class="nav-login-button" data-toggle="modal" data-target="#login-modal">LOGIN</button>
+                    <a href="{{url_for('auth.login')}}"><button type="button" class="nav-login-button">LOGIN</button></a>
                 </li>
                 {%endif%}
             </ul>
@@ -67,14 +68,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="email">Email</label><br>
-                    <input type="email" placeholder="Email address"></input><br><br>
+                    <form method="POST" action="/login">
+                        <label for="email">Email</label><br>
+                        <input type="email" placeholder="Email address"></input><br><br>
 
-                    <label for="email">Password</label><br>
-                    <input type="password" placeholder="Password"></input><br><br>
+                        <label for="email">Password</label><br>
+                        <input type="password" placeholder="Password"></input><br><br>
 
-                    <input type="checkbox" id="check" name="vehicle1" value="check">
-                    <label for="check" style="margin-left: -42%;">Remember Me</label>
+                        <input type="checkbox" id="check" name="vehicle1" value="check">
+                        <label for="check" style="margin-left: -42%;">Remember Me</label>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button">LOGIN</button>
