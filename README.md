@@ -30,7 +30,7 @@ To clone the project:
 
 1. App configuration at start.sh
    ```
-   export SECRET_KEY="<enter your api key>"
+   export SECRET_KEY="<enter your secret key>"
    export MAIL_USERNAME="<your email_address>"
    export MAIL_PASSWORD="<your email_password>"
 
