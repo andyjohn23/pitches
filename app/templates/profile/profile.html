@@ -1,39 +1,69 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <!-- displaying  Username-->
-        <div class="col-md-2" style="margin-top: 5%;">
-            <h3> {{user.username| capitalize}} </h3>
+<div class="container-fluid flex flex-column" style="margin: 0; padding: 0;">
+    <nav class="navbar fixed-top navbar-expand">
+        <a class="navbar-brand" href="/category">
+            <img src="/static/images/pitch-logo.png" alt="logo" />
+            <span>Pitch-it</span>
+        </a>
 
-            <!--Displaying user bio-->
-            {% if user.bio %}
-            <p> {{user.bio}}</p>
-            {%else%}
-            <p> {{user.username| capitalize}} has no bio </p>
-            {% endif %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" style="margin-right: 10%;">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{current_user.username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{url_for('main.new_pitch')}}">Pitch</a>
+                        <a class="dropdown-item"
+                            href="{{url_for('main.profile',uname=current_user.username)}}">Account</a>
+                        <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
+                    </div>
+                </li>
+                {% else %}
+                
+                {%endif%}
+            </ul>
         </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <!-- displaying  Username-->
+            <div class="col-md-2" style="margin-top: 14%;">
+                <h3> {{user.username| capitalize}} </h3>
 
-        <!--Display profile photo-->
-        <div class="col-md-4">
-            {% if user.profile_pic_path %}
+                <!--Displaying user bio-->
+                {% if user.bio %}
+                <p> {{user.bio}}</p>
+                {%else%}
+                <p> {{user.username| capitalize}} has no bio </p>
+                {% endif %}
+            </div>
 
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail" style="border-radius: 50%; width:170px; height: 170px; object-fit: cover;">
+            <!--Display profile photo-->
+            <div class="col-md-4" style="margin-top: 14%;">
+                {% if user.profile_pic_path %}
 
-            {%else%}
-            <p>No profile picture</p>
+                <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail"
+                    style="border-radius: 50%; width:170px; height: 170px; object-fit: cover;">
 
-            {% endif %}
+                {%else%}
+                <p>No profile picture</p>
 
-            {% if user == current_user %}
-            <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post"
-                enctype="multipart/form-data">
+                {% endif %}
 
-                <input type="file" name="photo" class="form-control" required style="width: 210px;">
-                <input type="submit">
-            </form>
-            {% endif %}
+                {% if user == current_user %}
+                <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post"
+                    enctype="multipart/form-data">
+
+                    <input type="file" name="photo" class="form-control" required style="width: 210px;">
+                    <input type="submit" style="margin-top: 3%;">
+                </form>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
