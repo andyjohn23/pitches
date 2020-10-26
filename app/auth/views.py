@@ -6,7 +6,7 @@ from .. import db
 from flask_login import login_user,logout_user,login_required
 from ..email import mail_message
 
-@auth.route('/register',methods = ["GET","POST"])
+@auth.route('/register', methods = ['GET','POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -17,10 +17,10 @@ def register():
         mail_message("Welcome to Pitch-it","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
-    title = "New Account"
+    title = "Pitch-it"
     return render_template('auth/register.html',registration_form = form, title = title)
 
-@auth.route('/login',methods=['GET','POST'])
+@auth.route('/login', methods=['GET','POST'])
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():

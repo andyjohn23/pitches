@@ -11,19 +11,10 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto" style="margin-right: 10%;">
-                {% if current_user.is_authenticated %}
-                <li style="color:white;padding:15px;">{{current_user.username}}</li>
-                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-                {% else %}
-                <li class="nav-item">
-                    <a href="{{url_for('auth.register')}}"><button type="button" class="nav-signup-button">SIGN
-                            UP</button></a>&nbsp;
-                </li>&nbsp;&nbsp;
                 <li class="nav-item">
                     <a href="{{url_for('auth.login')}}"><button type="button"
                             class="nav-login-button">LOGIN</button></a>
                 </li>
-                {%endif%}
             </ul>
         </div>
     </nav>
