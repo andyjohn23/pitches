@@ -6,8 +6,9 @@
 ## DESCRIPTION 
 This is a flask web application that allow users to pitch and impress
 others with little time given, one minute can either make you or break you.
+
 ## LIVE SITE
-()
+(https://pitch-andy.herokuapp.com/)
 
 ## FIGMA DESIGN
 (https://www.figma.com/file/Zg84x9lD8TrrsTJVAJH5Sy/pitch-it?node-id=0%3A1)
@@ -16,7 +17,7 @@ others with little time given, one minute can either make you or break you.
 To clone the project:
 1. Create and Open a folder in Visual Studio Code then initialize git,
    ```
-   git clone https://github.com/andyjohn23/new-api-flask.git
+   git clone https://github.com/andyjohn23/pitches
 
    ```
 
