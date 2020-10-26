@@ -319,7 +319,7 @@ body{
     display: inline-grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
-    grid-gap: 10px;
+    grid-gap: 5px;
     margin-top: 5%;
 }
 h3{

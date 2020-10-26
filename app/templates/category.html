@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 {% import 'bootstrap/wtf.html' as wtf%}
 <!-- Content block -->
@@ -44,18 +44,42 @@
             <div class="col-md-4">
                 <div class="category">
                     <h1>Categories</h1>
-                    <a class="nav-link" href="#all"><button type="button">All</button></a>
-                    <a class="nav-link" href="/"><button type="button">Sales</button></a>
-                    <a class="nav-link" href="/"><button type="button">Interview</button></a>
-                    <a class="nav-link" href="/"><button type="button">Elevator</button></a>
-                    <a class="nav-link" href="/"><button type="button">Promotion</button></a>
-                    <a class="nav-link" href="/"><button type="button">Personal</button></a>
-                    <a class="nav-link" href="/"><button type="button">Pickup-lines</button></a>
+                    <a href="#all"><button type="button">All</button></a>
+                    <a href="#sales"><button type="button">Sales</button></a>
+                    <a href="#interview"><button type="button">Interview</button></a>
+                    <a href="#elevator"><button type="button">Elevator</button></a>
+                    <a href="#promotion"><button type="button">Promotion</button></a>
+                    <a href="#personal"><button type="button">Personal</button></a>
+                    <a href="#pickuplines"><button type="button">Pickup-lines</button></a>
                 </div>
             </div>
 
             <div class="col-md-4 show-pitch" id="all">
                 {{ macro.displayPitch(pitches)}}
+            </div>
+
+            <div class="col-md-4 show-pitch" id="sales">
+                {{ macro.displayPitch(sales)}}
+            </div>
+
+            <div class="col-md-4 show-pitch" id="interview">
+                {{ macro.displayPitch(interview)}}
+            </div>
+
+            <div class="col-md-4 show-pitch" id="elevator">
+                {{ macro.displayPitch(elevator)}}
+            </div>
+
+            <div class="col-md-4 show-pitch" id="promotion">
+                {{ macro.displayPitch(promotion)}}
+            </div>
+
+            <div class="col-md-4 show-pitch" id="personal">
+                {{ macro.displayPitch(personal)}}
+            </div>
+
+            <div class="col-md-4 show-pitch" id="pickuplines">
+                {{ macro.displayPitch(pickuplines)}}
             </div>
 
         </div>
