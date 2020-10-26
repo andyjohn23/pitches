@@ -25,8 +25,7 @@
                   </li>
                 {% else %}
                 <li class="nav-item">
-                    <button type="button" class="nav-signup-button" data-toggle="modal"
-                        data-target="#register-modal">SIGN UP</button>&nbsp;
+                    <a href="{{url_for('auth.register')}}"><button type="button" class="nav-signup-button">SIGN UP</button></a>&nbsp;
                 </li>&nbsp;&nbsp;
                 <li class="nav-item">
                     <a href="{{url_for('auth.login')}}"><button type="button" class="nav-login-button">LOGIN</button></a>
