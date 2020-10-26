@@ -3,15 +3,44 @@
 
 
 {% block content %}
+<div class="container-fluid flex flex-column" style="margin: 0; padding: 0;">
+    <nav class="navbar fixed-top navbar-expand">
+        <a class="navbar-brand" href="/category">
+            <img src="/static/images/pitch-logo.png" alt="logo" />
+            <span>Pitch-it</span>
+        </a>
 
-<div class=" row">
-
-    <div class="col-md-2"></div>
-    <div class="col-md-8" id="postform">
-        <h2 class="text-center">Create Pitch</h2>
-        {{wtf.quick_form(form)}}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" style="margin-right: 10%;">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{current_user.username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{url_for('main.new_pitch')}}">Pitch</a>
+                        <a class="dropdown-item"
+                            href="{{url_for('main.profile',uname=current_user.username)}}">Account</a>
+                        <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
+                    </div>
+                </li>
+                {% else %}
+                
+                {%endif%}
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class=" row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 pitch-form">
+                <h2 class="text-center">Create Pitch</h2>
+                {{wtf.quick_form(form)}}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
 
 {% endblock%}

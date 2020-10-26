@@ -271,3 +271,45 @@
     outline: none;
     border-radius: 8px;
 }
+.pitch-form{
+    margin-top: 10%;
+}
+.pitch-form input{
+    outline: none;
+    background: transparent;
+    border: 1px solid black;
+    width: 88%;
+    margin-left: 5%;
+}
+.pitch-form label{
+    margin-left: 5.5%;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    color: grey;
+}
+.pitch-form input[type=submit]{
+    width: 88%;
+    height: 50px;
+    background-color: #4BBCFB;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+}
+.pitch-form select{
+    outline: none;
+    background: transparent;
+    border: 1px solid black;
+    width: 88%;
+    margin-left: 5%;
+}
+.pitch-form textarea{
+    outline: none;
+    background: transparent;
+    border: 1px solid black;
+    width: 88%;
+    margin-left: 5%;
+}
+
