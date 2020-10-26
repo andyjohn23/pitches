@@ -107,6 +107,7 @@ class dislikes(db.Model):
     def save_dislikes(self):
         db.session.add(self)
         db.session.commit()
+        
     @classmethod
     def get_dislikes(cls,id):
         dislike = dislikes.query.filter_by(pitch_id=id).all()
