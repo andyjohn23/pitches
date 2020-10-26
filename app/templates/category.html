@@ -18,7 +18,7 @@
                         {{current_user.username}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="">Pitch</a>
+                      <a class="dropdown-item" href="{{url_for('main.new_pitch')}}">Pitch</a>
                       <a class="dropdown-item" href="{{url_for('main.profile',uname=current_user.username)}}">Account</a>
                       <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
                     </div>
@@ -54,7 +54,10 @@
                 <div class="card">
                     <img src="static/images/pitch.gif" class="card-img-top" alt="pitch-write">
                     <div class="card-body">
-                            {{ macro.display(pitches) }}
+                        <h5 class="card-title">Sales Pitch</h5>
+                        <div  class="container tab-pane active" id="all"><br>
+                            {{ macro.displayPitch(pitch) }}
+                        </div>
                     </div>
                 </div>
             </div>

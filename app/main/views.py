@@ -1,8 +1,8 @@
-from flask import render_template,request,redirect, url_for,abort
+from flask import render_template,request,redirect, url_for,abort,flash
 from . import main
-from flask_login import login_required
-from ..models import User
-from .forms import UpdateProfile
+from flask_login import login_required,current_user
+from ..models import User,pitch,likes,dislikes,comments
+from .forms import UpdateProfile,CommentsForm,PitchForm
 from .. import db,photos
 
 
@@ -62,3 +62,19 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
+@main.route('/new_pitch', methods = ['POST','GET'])
+@login_required
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        post = form.post.data
+        category = form.category.data
+        author = current_user
+        new_pitch_object = pitch(title = title, post = post, category = category, author = author)
+        new_pitch_object.save_pitch()
+
+        flash('Your pitch has been created', 'success')
+        return redirect(url_for('main.category'))
+        
+    return render_template('new_pitch.html', form = form)
