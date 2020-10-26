@@ -40,13 +40,13 @@
             <div class="col-md-4">
                 <div class="category">
                     <h1>Categories</h1>
-                    <a href="/"><button type="button">All</button></a>
-                    <a href="/"><button type="button">Sales</button></a>
-                    <a href="/"><button type="button">Interview</button></a>
-                    <a href="/"><button type="button">Elevator</button></a>
-                    <a href="/"><button type="button">Promotion</button></a>
-                    <a href="/"><button type="button">Personal</button></a>
-                    <a href="/"><button type="button">Pickup-lines</button></a>
+                    <a class="nav-link" href="#allpitches"><button type="button">All</button></a>
+                    <a class="nav-link" href="/"><button type="button">Sales</button></a>
+                    <a class="nav-link" href="/"><button type="button">Interview</button></a>
+                    <a class="nav-link" href="/"><button type="button">Elevator</button></a>
+                    <a class="nav-link" href="/"><button type="button">Promotion</button></a>
+                    <a class="nav-link" href="/"><button type="button">Personal</button></a>
+                    <a class="nav-link" href="/"><button type="button">Pickup-lines</button></a>
                 </div>
             </div>
 
@@ -64,8 +64,8 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                {{macro.displayPitch(pitches)}}
+            <div class="container tab-pane fade" id="allpitches" class="border"><br>
+                {{ macro.displayPitch(pitches)}}
             </div>
         </div>
     </div>

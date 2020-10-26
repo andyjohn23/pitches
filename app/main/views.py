@@ -1,27 +1,36 @@
-from flask import render_template,request,redirect, url_for,abort,flash
+from flask import render_template, request, redirect, url_for, abort, flash
 from . import main
-from flask_login import login_required,current_user
-from ..models import User,pitch,comment
-from .forms import UpdateProfile,CommentsForm,PitchForm
-from .. import db,photos
+from flask_login import login_required, current_user
+from ..models import User, pitch, comment
+from .forms import UpdateProfile, CommentsForm, PitchForm
+from .. import db, photos
 
 
 @main.route('/')
 def index():
-	"""
-	view root page function that returns the index page and its data
-	"""
+    """
+    view root page function that returns the index page and its data
+    """
 
-	return render_template('index.html')
+    return render_template('index.html')
 
 
 @main.route('/category')
 def category():
-	"""
-	view root page function that returns the category page and its data
-	"""
-    
-	return render_template('category.html')
+    """
+    view root page function that returns the category page and its data
+    """
+
+    pitches = pitch.query.all()
+    sales = pitch.query.filter_by(category = 'sales').all() 
+    interview = pitch.query.filter_by(category = 'interview').all()
+    elevator = pitch.query.filter_by(category = 'elevator').all()
+    promotion = pitch.query.filter_by(category = 'promotion').all()
+    personal = pitch.query.filter_by(category = 'personal').all()
+    pickuplines = pitch.query.filter_by(category = 'pickuplines').all()
+
+    return render_template('category.html', pitches = pitches, sales = sales,interview = interview, 
+    elevator = elevator,promotion = promotion, personal = personal, pickuplines = pickuplines)
 
 @main.route('/user/<uname>')
 def profile(uname):
