@@ -20,7 +20,7 @@ def register():
     title = "Pitch-it"
     return render_template('auth/register.html',registration_form = form, title = title)
 
-@auth.route('/login', methods=['GET','POST'])
+@auth.route('/login', methods=["GET","POST"])
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
