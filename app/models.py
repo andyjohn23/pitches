@@ -8,111 +8,91 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class User(UserMixin,db.Model):
-    __tablename__ = 'users'
+class User(UserMixin, db.Model):
+    '''
+    Model class/db table for the user
+    Args:
+        db.Model: Connect our class to the database
+    '''
+    __tablename__  = 'users'
 
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),index = True)
-    email = db.Column(db.String(255),unique = True,index = True)
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique = True, index=True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    pitches = db.relationship('pitch', backref='user', lazy='dynamic')
-    comments = db.relationship('comments', backref='user', lazy='dynamic')
-    like = db.relationship('likes',backref='user',lazy='dynamic')
-    dislike = db.relationship('dislikes',backref='user',lazy='dynamic')
-    pass_secure  = db.Column(db.String(255))
+    pitches = db.relationship('pitch', backref='author', lazy='dynamic')
+    pass_secure = db.Column(db.String())
 
     @property
     def password(self):
-            raise AttributeError('You cannot read the password attribute')
+        '''
+        Define property object to make limit access to pass_secure
+        '''
+        raise AttributeError('You cannot read the password attribute')
 
     @password.setter
-    def password(self, password):
+    def password(self,password):
         self.pass_secure = generate_password_hash(password)
 
+    def verify_password(self,password):
+        return check_password_hash(self.pass_secure,password)
 
-    def verify_password(self, password):
-        return check_password_hash(self.pass_secure, password)
-
+    def save_user(self):
+        '''
+        Function to save a user
+        '''
+        db.session.add(self)
+        db.session.commit()
+    
     def __repr__(self):
-        return f'User is {self.username}'
+        return f'User {self.username}'
+
 class pitch(db.Model):
-    __tablename__ = 'pitch'
+    '''
+    Model class to specify one to many relationship
+    Args:
+        db.Model: Connect our class to the database
+    '''
+
+    __tablename__ = 'pitches'
+
     id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(255),nullable = False)
-    post = db.Column(db.Text(), nullable = False)
-    comment = db.relationship('comments',backref='pitch',lazy='dynamic')
-    like = db.relationship('likes',backref='pitch',lazy='dynamic')
-    dislike = db.relationship('dislikes',backref='pitch',lazy='dynamic')
+    title = db.Column(db.String(255))
+    content = db.Column(db.String())
+    category = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    time = db.Column(db.DateTime, default = datetime.utcnow)
-    category = db.Column(db.String(255), index = True,nullable = False)
-    
+    comments = db.relationship('comment', backref='pitch', lazy='dynamic')
+
     def save_pitch(self):
+        """
+        Save Function
+        """
         db.session.add(self)
         db.session.commit()
 
-        
     def __repr__(self):
-        return f'Pitch {self.post}'
+        return f'pitch {self.title}'
 
-class comments(db.Model):
+
+class comment(db.Model):
+    '''
+    Model table to store, access and manipulate comments
+    '''
     __tablename__ = 'comments'
-    id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.Text(),nullable = False)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'),nullable = False)
 
-    def save_comments(self):
+    id = db.Column(db.Integer, primary_key = True)
+    content = db.Column(db.String())
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
+
+    def save_comment(self):
+        """
+        Save Function
+        """
         db.session.add(self)
         db.session.commit()
 
-    @classmethod
-    def get_comments(cls,pitch_id):
-        comment = comments.query.filter_by(pitch_id=pitch_id).all()
-
-        return comment
-
-    
     def __repr__(self):
-        return f'comment:{self.comment}'
-
-class likes(db.Model):
-    __tablename__ = 'likes'
-
-    id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
-    
-    def save_likes(self):
-        db.session.add(self)
-        db.session.commit()
-
-    @classmethod
-    def get_likes(cls,id):
-        like = likes.query.filter_by(pitch_id=id).all()
-        return like
-
-
-    def __repr__(self):
-        return f'{self.user_id}:{self.pitch_id}'
-
-class dislikes(db.Model):
-    __tablename__ = 'dislikes'
-
-    id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
-    
-    def save_dislikes(self):
-        db.session.add(self)
-        db.session.commit()
-        
-    @classmethod
-    def get_dislikes(cls,id):
-        dislike = dislikes.query.filter_by(pitch_id=id).all()
-        return dislike
-
-    def __repr__(self):
-        return f'{self.user_id}:{self.pitch_id}'
+       return f'comment {self.content}'
 

@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect, url_for,abort,flash
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,pitch,likes,dislikes,comments
+from ..models import User,pitch,comment
 from .forms import UpdateProfile,CommentsForm,PitchForm
 from .. import db,photos
 
@@ -62,19 +62,36 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/new_pitch', methods = ['POST','GET'])
+@main.route('/pitch_new', methods = ['GET','POST'])
 @login_required
 def new_pitch():
+    '''
+    Function to create and save pitches in database
+    '''
     form = PitchForm()
     if form.validate_on_submit():
-        title = form.title.data
-        post = form.post.data
-        category = form.category.data
-        author = current_user
-        new_pitch_object = pitch(title = title, post = post, category = category, author = author)
-        new_pitch_object.save_pitch()
+        pitches = pitch(title = form.title.data, content = form.content.data, category = form.category.data, user_id = current_user.id)
+        pitches.save_pitch()
 
-        flash('Your pitch has been created', 'success')
-        return redirect(url_for('main.category'))
-        
-    return render_template('new_pitch.html', form = form)
+        return(redirect(url_for('main.category')))
+
+    return render_template('pitch_new.html', form = form)
+
+@main.route('/pitch/<category>')
+def pitch_category(category):
+    '''
+    Function to get and return template to view numerous categories
+    '''
+    pitches = pitch.query.filter_by(category = category).all()
+    return render_template('category.html', pitches = pitches)
+
+@main.route('/pitch/view/<pitch_id>', methods = ['GET', 'POST'])
+def view_pitch(pitch_id):
+    '''
+    Function to view pitches
+    '''
+    pitches = pitch.query.filter_by(id = pitch_id).first()
+    comments = comment.query.filter_by(pitch_id = pitch_id).all()
+    
+    return render_template('pitch/pitch.html', pitch = pitches, comments = comments)
+    

@@ -7,13 +7,20 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class PitchForm(FlaskForm):
+    """
+    pitch form to create new pitch
+    """
     title = StringField('Title', validators=[Required()])
     category = SelectField('Pitch Category', choices=[('Sales','Sales'),('Interview','Interview'),
     ('Elevator','Elevator'),('Promotionr','Promotion'),('Personal','Personal'),
     ('Pickup-lines','Pickup-lines')],validators=[Required()])
-    post = TextAreaField('Your Pitch', validators=[Required()])
-    submit = SubmitField('Pitch')
+    content = TextAreaField('Pitch', validators=[Required()])
+    submit = SubmitField('Post Pitch')
+
 
 class CommentsForm(FlaskForm):
-    comment = TextAreaField('Leave a comment',validators=[Required()])
+    """
+    comment form
+    """
+    content = TextAreaField('Comment', validators=[Required()])
     submit = SubmitField('Comment')

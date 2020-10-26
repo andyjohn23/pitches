@@ -15,7 +15,7 @@
                 {% if current_user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{current_user.username}}
+                    {{current_user.username}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{{url_for('main.new_pitch')}}">Pitch</a>
@@ -55,18 +55,6 @@
                     <img src="static/images/pitch.gif" class="card-img-top" alt="pitch-write">
                     <div class="card-body">
                         <h5 class="card-title">Sales Pitch</h5>
-                        <div  class="container tab-pane active" id="all"><br>
-                            {{ macro.displayPitch(pitch) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="static/images/pitch.gif" class="card-img-top" alt="pitch-write">
-                    <div class="card-body">
-                        <h5 class="card-title">Sales Pitch</h5>
                         <p class="card-text">
                             “We at pitch-it connect thousands of people through the
                             power of pitching, one minute can either make or break you,
@@ -74,6 +62,10 @@
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-4">
+                {{macro.displayPitch(pitches)}}
             </div>
         </div>
     </div>
