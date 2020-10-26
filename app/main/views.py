@@ -74,9 +74,9 @@ def update_pic(uname):
 @main.route('/pitch_new', methods = ['GET','POST'])
 @login_required
 def new_pitch():
-    '''
-    Function to create and save pitches in database
-    '''
+    """
+    create and save pitches
+    """
     form = PitchForm()
     if form.validate_on_submit():
         pitches = pitch(title = form.title.data, content = form.content.data, category = form.category.data, user_id = current_user.id)
@@ -88,17 +88,17 @@ def new_pitch():
 
 @main.route('/pitch/<category>')
 def pitch_category(category):
-    '''
-    Function to get and return template to view numerous categories
-    '''
+    """
+    displays various pitch categories
+    """
     pitches = pitch.query.filter_by(category = category).all()
     return render_template('category.html', pitches = pitches)
 
 @main.route('/pitch/view/<pitch_id>', methods = ['GET', 'POST'])
 def view_pitch(pitch_id):
-    '''
-    Function to view pitches
-    '''
+    """
+    view pitches
+    """
     pitches = pitch.query.filter_by(id = pitch_id).first()
     comments = comment.query.filter_by(pitch_id = pitch_id).all()
     

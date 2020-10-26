@@ -1,5 +1,5 @@
 {% macro displayPitch(category) %}
-{%if pitches%}
+{%if category%}
 {% for pitch in category %}
 
 <div class="container">
@@ -9,7 +9,7 @@
 			<div class="card-body">
 				<h5 class="card-title">{{pitch.title}}</h5>
 				<p class="card-text">{{pitch.category}}</p>
-				<p class="card-text">{{pitch.pitch}}</p>
+				<p class="card-text">{{pitch.content}}</p>
 				
 			</div>
 		</a>

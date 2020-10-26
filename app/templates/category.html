@@ -14,21 +14,25 @@
             <ul class="navbar-nav ml-auto" style="margin-right: 10%;">
                 {% if current_user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{current_user.username}}
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{current_user.username}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{url_for('main.new_pitch')}}">Pitch</a>
-                      <a class="dropdown-item" href="{{url_for('main.profile',uname=current_user.username)}}">Account</a>
-                      <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
+                        <a class="dropdown-item" href="{{url_for('main.new_pitch')}}">Pitch</a>
+                        <a class="dropdown-item"
+                            href="{{url_for('main.profile',uname=current_user.username)}}">Account</a>
+                        <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
                     </div>
-                  </li>
+                </li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="{{url_for('auth.register')}}"><button type="button" class="nav-signup-button">SIGN UP</button></a>&nbsp;
+                    <a href="{{url_for('auth.register')}}"><button type="button" class="nav-signup-button">SIGN
+                            UP</button></a>&nbsp;
                 </li>&nbsp;&nbsp;
                 <li class="nav-item">
-                    <a href="{{url_for('auth.login')}}"><button type="button" class="nav-login-button">LOGIN</button></a>
+                    <a href="{{url_for('auth.login')}}"><button type="button"
+                            class="nav-login-button">LOGIN</button></a>
                 </li>
                 {%endif%}
             </ul>
@@ -40,7 +44,7 @@
             <div class="col-md-4">
                 <div class="category">
                     <h1>Categories</h1>
-                    <a class="nav-link" href="#allpitches"><button type="button">All</button></a>
+                    <a class="nav-link" href="#all"><button type="button">All</button></a>
                     <a class="nav-link" href="/"><button type="button">Sales</button></a>
                     <a class="nav-link" href="/"><button type="button">Interview</button></a>
                     <a class="nav-link" href="/"><button type="button">Elevator</button></a>
@@ -50,23 +54,10 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="static/images/pitch.gif" class="card-img-top" alt="pitch-write">
-                    <div class="card-body">
-                        <h5 class="card-title">Sales Pitch</h5>
-                        <p class="card-text">
-                            “We at pitch-it connect thousands of people through the
-                            power of pitching, one minute can either make or break you,
-                            impress others through your pitches.”
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container tab-pane fade" id="allpitches" class="border"><br>
+            <div class="col-md-4 show-pitch" id="all">
                 {{ macro.displayPitch(pitches)}}
             </div>
+
         </div>
     </div>
 </div>
