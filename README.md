@@ -9,6 +9,9 @@ others with little time given, one minute can either make you or break you.
 ## LIVE SITE
 ()
 
+## FIGMA DESIGN
+(https://www.figma.com/file/Zg84x9lD8TrrsTJVAJH5Sy/pitch-it?node-id=0%3A1)
+
 ## DEVELOPMENT INSTALLATION
 To clone the project:
 1. Create and Open a folder in Visual Studio Code then initialize git,
